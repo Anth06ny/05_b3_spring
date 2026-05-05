@@ -1,5 +1,6 @@
 package org.example._5_b3_spring
 
+import org.example._5_b3_spring.entities.MessageEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController

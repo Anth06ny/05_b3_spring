@@ -1,3 +1,3 @@
-package org.example._5_b3_spring
+package org.example._5_b3_spring.entities
 
 data class StudentEntity(var name: String, var note: Int)
