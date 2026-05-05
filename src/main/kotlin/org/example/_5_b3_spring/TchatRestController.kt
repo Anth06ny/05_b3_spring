@@ -1,6 +1,5 @@
 package org.example._5_b3_spring
 
-import jdk.internal.joptsimple.internal.Messages.message
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -9,23 +8,24 @@ class TchatRestController {
 
     val list = arrayListOf(MessageEntity("Toto", "1er message"))
 
-    @GetMapping("/test")
-    fun test(): String {
-        println("/test")
-        return "test ok"
-    }
 
-    @GetMapping("addMessage")
-    fun addMessage(): List<MessageEntity> {
-        return list
-    }
-
+    //http://localhost:8080/api/allMessages
     @GetMapping("allMessages")
     fun allMessages() = list
 
+    //http://localhost:8080/api/addMessage?pseudo=toto&message=hello
+    @GetMapping("addMessage")
+    fun addMessage(pseudo: String, message: String): List<MessageEntity> {
+        list.add(MessageEntity(pseudo, message))
+        return list
+    }
+
+    //http://localhost:8080/api/saveMessage
+    //
     @PostMapping("saveMessage")
-    fun saveMessage(@RequestBody message: MessageEntity): String {
-        return "Message received: $message"
+    fun saveMessage(@RequestBody message: MessageEntity) {
+        list.add(message)
+
     }
 
 
